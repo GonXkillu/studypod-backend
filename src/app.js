@@ -13,16 +13,15 @@ const reportRoutes      = require('./routes/reports');
 
 const app = express();
 
-const allowedOrigins = process.env.ALLOWED_ORIGINS
+const rawOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
-  : [];
+  : ['*'];
+const allowAll = rawOrigins.includes('*');
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.length === 0 || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+    if (!origin || allowAll) return callback(null, true);
+    if (rawOrigins.includes(origin)) return callback(null, true);
     return callback(new Error(`CORS: origin ${origin} not allowed.`));
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
