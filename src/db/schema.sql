@@ -1,5 +1,5 @@
 -- StudyPod Scheduler Database Schema
--- Run this file once against your Neon PostgreSQL database to set up all tables.
+-- Run this  once against the Neon PostgreSQL database to set up all tables.
 
 -- Users table
 CREATE TABLE IF NOT EXISTS users (
@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS users (
   created_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Rooms / study pods table
+-- Rooms or study pods table
 CREATE TABLE IF NOT EXISTS rooms (
   id          SERIAL PRIMARY KEY,
   name        VARCHAR(100) NOT NULL,
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS reservations (
   CONSTRAINT no_end_before_start CHECK (end_time > start_time)
 );
 
--- Index for fast conflict checking
+-- Index for conflict checking
 CREATE INDEX IF NOT EXISTS idx_reservations_room_time
   ON reservations (room_id, start_time, end_time)
   WHERE status = 'active';

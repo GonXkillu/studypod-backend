@@ -39,7 +39,7 @@ router.post('/register', async (req, res) => {
 
 /**
  * POST /api/auth/login
- * Authenticate with email + password and receive a JWT.
+ * Authenticate with email + password then receive a JWT.
  */
 router.post('/login', async (req, res) => {
   try {

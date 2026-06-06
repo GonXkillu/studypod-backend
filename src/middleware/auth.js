@@ -17,8 +17,8 @@ function signToken(user) {
 }
 
 /**
- * Express middleware — verifies the Authorization Bearer token.
- * Attaches the decoded payload to req.user on success.
+ * First verifies the Authorization Bearer token.
+ Then attaches the decoded payload to req.user if successful.
  */
 function requireAuth(req, res, next) {
   const header = req.headers['authorization'] || '';
@@ -38,8 +38,8 @@ function requireAuth(req, res, next) {
 }
 
 /**
- * Express middleware — allows only users with the 'admin' role.
- * Must be used after requireAuth.
+ * Allows only users with the admin role.
+  Must be used after requireAuth.
  */
 function requireAdmin(req, res, next) {
   if (!req.user || req.user.role !== 'admin') {

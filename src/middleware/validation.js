@@ -2,8 +2,8 @@
 
 /**
  * Sanitize a string value:
- * - Trims leading/trailing whitespace
- * - Strips characters that are unsafe in plain-text contexts
+ *
+ * 
  * @param {string} value
  */
 function sanitizeString(value) {
@@ -12,8 +12,8 @@ function sanitizeString(value) {
 }
 
 /**
- * Express middleware factory — validates that all listed fields exist
- * in req.body and are non-empty strings after sanitization.
+ * Validates that all listed fields exist
+ * And req.body has non-empty strings after sanitization.
  * @param {string[]} fields
  */
 function requireFields(fields) {

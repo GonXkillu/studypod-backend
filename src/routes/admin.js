@@ -10,7 +10,7 @@ const { sanitizeString, isPositiveInt } = require('../middleware/validation');
 
 /**
  * GET /api/admin/reservations
- * All reservations with full details. Supports filtering via query params:
+ * All reservations with full details. Can filter using query params:
  *   ?status=active|cancelled  ?room_id=  ?from=ISO  ?to=ISO  ?search=
  */
 router.get('/reservations', requireAuth, requireAdmin, async (req, res) => {

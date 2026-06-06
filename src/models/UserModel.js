@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const BaseModel = require('./BaseModel');
 
 /**
- * UserModel inherits from BaseModel (inheritance).
- * Adds user-specific logic: registration, login, and credential validation.
+ * UserModel inherits from BaseModel .
+ * Adds user specific logic: registration, login, and credential validation.
  */
 class UserModel extends BaseModel {
   constructor() {
@@ -82,7 +82,7 @@ class UserModel extends BaseModel {
   }
 
   /**
-   * Return a safe public representation of a user (no password hash).
+   * Return the public representation of a user (no password hash).
    * @param {Object} user
    */
   toPublic(user) {

@@ -3,7 +3,7 @@
 const BaseModel = require('./BaseModel');
 
 /**
- * ReservationModel inherits from BaseModel (inheritance).
+ * ReservationModel inherits from BaseModel.
  * Handles reservation creation, conflict detection, and reporting.
  */
 class ReservationModel extends BaseModel {
@@ -13,7 +13,7 @@ class ReservationModel extends BaseModel {
 
   /**
    * Polymorphic override of BaseModel.validate().
-   * Enforces reservation-specific field rules.
+   * Enforces reservation specific field rules.
    */
   validate(data) {
     const errors = [];
@@ -50,7 +50,7 @@ class ReservationModel extends BaseModel {
 
   /**
    * Check whether a time slot is already taken for a room.
-   * Returns the conflicting reservation, or null if the slot is free.
+   * Returns the conflicting reservation or null if the slot is free.
    * @param {number} roomId
    * @param {string} startTime
    * @param {string} endTime
@@ -106,7 +106,7 @@ class ReservationModel extends BaseModel {
   }
 
   /**
-   * Get all reservations for a user, with room name joined.
+   * Get all reservations for a user +  room name .
    */
   async findByUser(userId) {
     const { rows } = await this.query(
@@ -139,7 +139,7 @@ class ReservationModel extends BaseModel {
   }
 
   /**
-   * Full admin view: all reservations with user and room details.
+   * Admin view: all reservations with user and room details.
    */
   async findAllDetailed(filters = {}) {
     const conditions = [];
@@ -195,7 +195,7 @@ class ReservationModel extends BaseModel {
 
   /**
    * Generate a summary report grouped by room.
-   * Used for the Reports page.
+   * Used for the Admins Reports page.
    */
   async roomUsageReport(from, to) {
     const { rows } = await this.query(

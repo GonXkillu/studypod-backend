@@ -9,7 +9,7 @@ const { sanitizeString, isPositiveInt, isValidDate } = require('../middleware/va
 
 /**
  * GET /api/reservations/my
- * Return all reservations for the logged-in student.
+ * Return all reservations for the logged-in user.
  */
 router.get('/my', requireAuth, async (req, res) => {
   try {
@@ -51,7 +51,7 @@ router.get('/room/:roomId', requireAuth, async (req, res) => {
 
 /**
  * POST /api/reservations
- * Create a new reservation (students only — conflict check enforced).
+ * Create a new reservation (users only with conflict check enforced).
  */
 router.post('/', requireAuth, async (req, res) => {
   try {
@@ -85,7 +85,7 @@ router.post('/', requireAuth, async (req, res) => {
 
 /**
  * DELETE /api/reservations/:id
- * Cancel a reservation. Students can only cancel their own; admins cancel any.
+ * Cancel a reservation. users can only cancel their own; admins can cancel any.
  */
 router.delete('/:id', requireAuth, async (req, res) => {
   try {

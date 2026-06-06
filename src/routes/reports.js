@@ -9,8 +9,8 @@ const { isValidDate } = require('../middleware/validation');
 
 /**
  * GET /api/reports/room-usage
- * Admin: room utilization summary between two dates.
- * Query: ?from=ISO&to=ISO
+ * Admin: room usage summary between two dates.
+ * Query: ?from=ISO&to=ISOs
  */
 router.get('/room-usage', requireAuth, requireAdmin, async (req, res) => {
   try {

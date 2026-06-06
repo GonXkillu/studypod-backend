@@ -4,8 +4,7 @@ const pool = require('../db/pool');
 
 /**
  * BaseModel provides common database interaction methods for all entity models.
- * Concrete subclasses inherit these methods and may override them (polymorphism).
- * All SQL uses parameterized queries to prevent SQL injection (encapsulation of DB logic).
+ * All SQL uses parameterized queries to prevent SQL injection.
  */
 class BaseModel {
   constructor(tableName) {
@@ -42,7 +41,7 @@ class BaseModel {
   }
 
   /**
-   * Return all rows, optionally filtered by a WHERE clause.
+   * Return all rows option to filter by a WHERE clause.
    * @param {string} whereClause  e.g. "is_active = $1"
    * @param {Array}  params
    * @param {string} orderBy      e.g. "created_at DESC"
@@ -69,7 +68,7 @@ class BaseModel {
   }
 
   /**
-   * Validate entity data. Subclasses should override this method (polymorphism).
+   * Validate entity data. Subclasses should override this method.
    * @param {Object} data
    * @returns {{ valid: boolean, errors: string[] }}
    */

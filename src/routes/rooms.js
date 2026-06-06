@@ -26,7 +26,7 @@ router.get('/', requireAuth, async (req, res) => {
 
 /**
  * GET /api/rooms/all
- * Admin: list all rooms including inactive ones.
+ * Admin: list all rooms even inactive ones.
  */
 router.get('/all', requireAuth, requireAdmin, async (req, res) => {
   try {

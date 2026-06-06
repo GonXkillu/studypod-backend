@@ -3,8 +3,8 @@
 const BaseModel = require('./BaseModel');
 
 /**
- * RoomModel inherits from BaseModel (inheritance).
- * Manages study room / pod records.
+ * RoomModel inherits from BaseModel .
+ * Manages study room + pod records.
  */
 class RoomModel extends BaseModel {
   constructor() {
@@ -13,7 +13,7 @@ class RoomModel extends BaseModel {
 
   /**
    * Polymorphic override of BaseModel.validate().
-   * Enforces room-specific field rules.
+   * Enforces room specific field rules.
    */
   validate(data) {
     const errors = [];
@@ -35,7 +35,7 @@ class RoomModel extends BaseModel {
   }
 
   /**
-   * Return all active rooms, ordered by name.
+   * Return all active rooms in order by name.
    */
   async findActive() {
     return this.findAll('is_active = $1', [true], 'name ASC');
@@ -56,7 +56,7 @@ class RoomModel extends BaseModel {
   }
 
   /**
-   * Update room fields.
+   * Update room.
    * @param {number} id
    * @param {{ name?, capacity?, location?, description?, is_active? }} fields
    */
@@ -83,7 +83,7 @@ class RoomModel extends BaseModel {
   }
 
   /**
-   * Search rooms by name or location keyword.
+   * Search rooms by name or location.
    * @param {string} keyword
    */
   async search(keyword) {
